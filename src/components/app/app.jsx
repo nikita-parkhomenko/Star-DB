@@ -2,8 +2,8 @@ import React from 'react';
 
 import Header from '../header/index'
 import RandomPlanet from '../randomPlanet'
-// import ItemList from '../itemList'
-// import PersonDetails from '../personDetails'
+import ItemList from '../itemList'
+import PersonDetails from '../personDetails'
 
 import './app.css'
 
@@ -13,7 +13,7 @@ const App = () => {
     <>
       <Header />
       <RandomPlanet />
-{/* 
+ 
       <div className = "row mb2">
 
         <div className = "col-md-6">
@@ -24,7 +24,7 @@ const App = () => {
           <PersonDetails />
         </div>
 
-      </div> */}
+      </div>
     </>
   )
 }
