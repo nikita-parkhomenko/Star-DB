@@ -8,7 +8,7 @@ class PersonDetails extends Component {
 
     return (
       <div className="person-details card">
-        <img className="person-image"
+        <img className="person-image" alt="person"
           src="https://starwars-visualguide.com/assets/img/characters/3.jpg" />
 
         <div className="card-body">
