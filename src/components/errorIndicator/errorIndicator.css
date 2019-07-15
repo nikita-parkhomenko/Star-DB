@@ -1,0 +1,13 @@
+.error-indicator {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: goldenrod;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
+
