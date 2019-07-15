@@ -6,10 +6,10 @@ import ErrorIndicator from '../errorIndicator'
 
 class RandomPlanet extends Component {
 
-  constructor() {
-    super();
+  componentDidMount() {
     this.updatePlanet();
     setInterval(this.updatePlanet, 4000)
+    console.log('DidMount')
   }
 
   swapiService = new swapiService()
