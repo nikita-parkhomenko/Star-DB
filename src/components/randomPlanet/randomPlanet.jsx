@@ -8,8 +8,7 @@ class RandomPlanet extends Component {
 
   componentDidMount() {
     this.updatePlanet();
-    setInterval(this.updatePlanet, 4000)
-    console.log('DidMount')
+    setInterval(this.updatePlanet, 5000)
   }
 
   swapiService = new swapiService()
