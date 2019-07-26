@@ -16,27 +16,24 @@ class ItemList extends Component {
     this.swapiService
       .getAllPeople()
       .then( (peopleList) => {
-        this.setState({ 
-          peopleList 
-        });
+        this.setState({
+          peopleList
+        })
       })
   }
 
-  renderItems(arr) {
-    return arr.map( ({ id, name }) => {
+  renderItems = (arr) => {
+    return arr.map( (person) => {
+      console.log(person);
       return (
-      <li className="list-group-item" 
-          key={id}
-          onClick={ () => this.props.onItemSelected(id) } >
-          {name}
-      </li>
+        <li key={person.id} className="list-group-item">
+          {person.name}
+        </li>
       )
     })
   }
 
-
   render() {
-
     const { peopleList } = this.state;
 
     const items = this.renderItems(peopleList);
