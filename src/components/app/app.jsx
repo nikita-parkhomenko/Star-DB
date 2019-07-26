@@ -9,15 +9,17 @@ import './app.css'
 
 class App extends Component {
 
-  state = {
-    selectedPerson: 1
-  }
+state = {
+  selectedPerson: 1
+}
 
-  onItemSelected = (id) => {
-    this.setState( {
-      selectedPerson: id
-    })
-  }
+onItemSelected = (id) => {
+  console.log(id)
+  this.setState({
+    selectedPerson: id
+  })
+}
+
   render() {
     return (
       <>
@@ -27,11 +29,11 @@ class App extends Component {
         <div className = "row mb2">
   
           <div className = "col-md-6">
-            <ItemList onItemSelected={this.onItemSelected} />
+            <ItemList onItemSelected={this.onItemSelected}/>
           </div>
   
           <div className = "col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
+            <PersonDetails personId={this.state.selectedPerson}/>
           </div>
   
         </div>

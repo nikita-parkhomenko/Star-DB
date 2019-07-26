@@ -4,40 +4,44 @@ import './personDetails.css'
 import SwapiService from '../../services/swapiServices';
 
 class PersonDetails extends Component {
-  swapiService = new SwapiService()
+  swapiService = new SwapiService();
 
   state = {
     person: null
   }
 
+  componentDidMount() {
+    this.updatePerson();
+  }
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId) 
-      this.updatePerson()
+    if (prevProps.personId !== this.props.personId) {
+      this.updatePerson();
+    }
   }
 
-  componentDidMount() {
-    this.updatePerson()
-  }
 
   updatePerson() {
-    const { personId } = this.props;
-    
+    const {personId} = this.props;
     if (!personId) return;
 
     this.swapiService
       .getPerson(personId)
       .then( (person) => {
-        this.setState({ person });
+        this.setState( {
+          person
+        })
       })
   }
+
+
 
   render() {
 
     if (!this.state.person) {
-      return <span>Select a person from the list.</span>
+      return <p>Select a person from a list.</p>
     }
+    const {person: {id, name, gender, birthYear, eyeColor} } = this.state;
 
-    const { person: { id, name, gender, birthYear, eyeColor } } = this.state;
 
     return (
       <div className="person-details card">
