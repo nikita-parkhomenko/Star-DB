@@ -2,41 +2,36 @@ import React, {Component} from 'react';
 
 import Header from '../header/index'
 import RandomPlanet from '../randomPlanet'
-import ItemList from '../itemList'
-import PersonDetails from '../personDetails'
+import ErrorButton from '../errorButton'
+import ErrorIndicator from '../errorIndicator'
+import PeoplePage from '../peoplePage'
 
 import './app.css'
 
 class App extends Component {
 
 state = {
-  selectedPerson: 1
+  hasError: false
 }
 
-onItemSelected = (id) => {
-  this.setState({
-    selectedPerson: id
-  })
+componentDidCatch() {
+  console.log('componentDidCatch()');
+  this.setState({hasError: true}) 
 }
 
   render() {
+
+    if(this.state.hasError) {
+      return <ErrorIndicator />
+    }
     return (
-      <>
+      <div className="stardb-app">
         <Header />
+        <ErrorButton />
         <RandomPlanet />
-   
-        <div className = "row mb2">
-  
-          <div className = "col-md-6">
-            <ItemList onItemSelected={this.onItemSelected}/>
-          </div>
-  
-          <div className = "col-md-6">
-            <PersonDetails personId={this.state.selectedPerson}/>
-          </div>
-  
-        </div>
-      </>
+        <PeoplePage />
+
+      </div>
     )  
   }
 }
