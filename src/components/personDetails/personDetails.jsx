@@ -1,14 +1,19 @@
 import React, {Component} from 'react'
 
-import './personDetails.css'
+import './personView.css'
 import SwapiService from '../../services/swapiServices';
+import PersonView from './personView'
+import Spinner from '../spinner';
+import ErrorIndicator from '../errorIndicator'
 
 class PersonDetails extends Component {
 
   swapiService = new SwapiService();
 
   state = {
-    person: null
+    person: null,
+    loading: true,
+    error: false
   }
 
   componentDidMount() {
@@ -21,53 +26,49 @@ class PersonDetails extends Component {
     }
   }
 
+  onPersonLoaded = (person) => {
+    this.setState({
+      person,
+      loading: false
+    })
+  }
+
+  onError = (error) => {
+    this.setState({
+      loading: false,
+      error: true
+    })
+  }
+
   updatePerson() {
     const { personId } = this.props;
     if (!personId) return;
 
     this.swapiService
       .getPerson(personId)
-      .then( person => {
-        this.setState({
-          person
-        })
-      })
-
+      .then( this.onPersonLoaded )
+      .catch( this.onError )
   }
 
 
   render() {
+    const { person, loading, error } = this.state;
 
-    if (!this.state.person) {
-      return <p>Please select a person from the List!</p>
-    }
+    const hasData = !(loading || error);
+    const spinner = loading ? <Spinner /> : null;
+    const errorMessage = error ? <ErrorIndicator /> : null;
+    const content = hasData ? <PersonView  person={ person } /> : null;
 
-    const { person: { id, name, gender, birthYear, eyeColor } } = this.state;
-
-    return (
-      <div className="person-details card">
-        <img className="person-image" alt="person"
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
-
-        <div className="card-body">
-          <h4> {name} </h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Gender</span>
-              <span> {gender} </span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Birth Year</span>
-              <span> {birthYear} </span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye Color</span>
-              <span> {eyeColor} </span>
-            </li>
-          </ul>
-        </div>
+    return(
+      <div className="card person-details">
+        {spinner}
+        {errorMessage}
+        {content}
       </div>
     )
+
+
+
   }
 }
 
