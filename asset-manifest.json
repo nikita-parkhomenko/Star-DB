@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Star-DB/static/css/main.b67f63d2.chunk.css",
+    "main.js": "/Star-DB/static/js/main.4b1b5b58.chunk.js",
+    "main.js.map": "/Star-DB/static/js/main.4b1b5b58.chunk.js.map",
+    "runtime~main.js": "/Star-DB/static/js/runtime~main.fd36be8f.js",
+    "runtime~main.js.map": "/Star-DB/static/js/runtime~main.fd36be8f.js.map",
+    "static/js/2.412d7751.chunk.js": "/Star-DB/static/js/2.412d7751.chunk.js",
+    "static/js/2.412d7751.chunk.js.map": "/Star-DB/static/js/2.412d7751.chunk.js.map",
+    "index.html": "/Star-DB/index.html",
+    "precache-manifest.b1cf582acbb35bee99499e572e6e33b0.js": "/Star-DB/precache-manifest.b1cf582acbb35bee99499e572e6e33b0.js",
+    "service-worker.js": "/Star-DB/service-worker.js",
+    "static/css/main.b67f63d2.chunk.css.map": "/Star-DB/static/css/main.b67f63d2.chunk.css.map",
+    "static/media/error-star.png": "/Star-DB/static/media/error-star.67547828.png"
+  }
+}
