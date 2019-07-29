@@ -4,6 +4,7 @@ import './personDetails.css'
 import SwapiService from '../../services/swapiServices';
 
 class PersonDetails extends Component {
+
   swapiService = new SwapiService();
 
   state = {
@@ -13,35 +14,35 @@ class PersonDetails extends Component {
   componentDidMount() {
     this.updatePerson();
   }
+
   componentDidUpdate(prevProps) {
-    if (prevProps.personId !== this.props.personId) {
+    if(prevProps.personId !== this.props.personId) {
       this.updatePerson();
     }
   }
 
-
   updatePerson() {
-    const {personId} = this.props;
+    const { personId } = this.props;
     if (!personId) return;
 
     this.swapiService
       .getPerson(personId)
-      .then( (person) => {
-        this.setState( {
+      .then( person => {
+        this.setState({
           person
         })
       })
-  }
 
+  }
 
 
   render() {
 
     if (!this.state.person) {
-      return <p>Select a person from a list.</p>
+      return <p>Please select a person from the List!</p>
     }
-    const {person: {id, name, gender, birthYear, eyeColor} } = this.state;
 
+    const { person: { id, name, gender, birthYear, eyeColor } } = this.state;
 
     return (
       <div className="person-details card">

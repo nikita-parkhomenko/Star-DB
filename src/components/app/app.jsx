@@ -14,7 +14,6 @@ state = {
 }
 
 onItemSelected = (id) => {
-  console.log(id)
   this.setState({
     selectedPerson: id
   })
